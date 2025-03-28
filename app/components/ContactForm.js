@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function ContactForm() {
     return (
-        <section className="bg-background py-16 px-6">
+        <section className="py-16 px-6">
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 bg-primary shadow-lg rounded-2xl p-8 md:p-16 max-w-screen-lg">
                 
                 {/* Contact Form */}

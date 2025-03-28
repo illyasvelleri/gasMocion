@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ProjectShowcase() {
     return (
-        <section className="container-lg bg-slate-50 mx-auto my-16 px-6 py-12 space-y-16 max-w-screen-lg">
+        <section className="container-lg mx-auto my-16 px-6 py-12 space-y-16 max-w-screen-lg">
             {/* Interior Design Project */}
             <div className="flex flex-col md:flex-row items-center gap-12">
                 {/* Left Image with Gradient */}

@@ -1,6 +1,6 @@
 export default function HowItWorks() {
     return (
-        <div className="bg-background">
+        <div className="">
         <section 
             className="relative max-w-5xl mx-auto px-6 py-16 text-white"
             style={{
