@@ -8,8 +8,8 @@ import { FaInstagram } from "react-icons/fa";
 
 const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'Interior', href: '/interiorProjects' },
-    { name: 'Exterior', href: '/exteriorProjects' },
+    { name: 'For Business', href: '/interiorProjects' },
+    { name: 'Safety First', href: '/exteriorProjects' },
     { name: 'Contact', href: '/contact' },
 ];
 
@@ -46,7 +46,7 @@ const Header = () => {
                         <a
                             key={item.name}
                             href={item.href}
-                            className="relative text-sm font-semibold text-gray-100 
+                            className="relative text-sm font-semibold text-gray-900 
                                    after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 
                                    after:bg-gray-100 after:transition-all after:duration-300 
                                    hover:after:w-full"
@@ -62,7 +62,7 @@ const Header = () => {
                         href="https://www.instagram.com/yourusername"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm font-semibold text-gray-100 hover:text-pink-400 transition"
+                        className="flex items-center gap-2 text-sm font-semibold text-gray-900 hover:text-pink-400 transition"
                     >
                         <FaInstagram className="text-lg" />
                         Follow <span aria-hidden="true">&rarr;</span>

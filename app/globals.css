@@ -2,18 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
-/* globals.css */
-body {
-    position: relative;
-    overflow-x: hidden;
+@layer base {
+  :root {
+    --dark-blue: #1E3A8A;
+    --orange: #F97316;
+    --orange-dark: #EF4444;
+  }
 }
 
-body::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: url('/noise.png'); /* not /public/noise.png */
-    opacity: 0.05;
-    z-index: -1;
-    pointer-events: none; /* optional - so it doesn't block clicks */
+@layer utilities {
+  /* Define custom shadow with orange color */
+  .shadow-orange-glow {
+    box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.2), 0 2px 4px -1px rgba(249, 115, 22, 0.06);
+  }
+}
+
+/* Stat block styling */
+.stat-block {
+  @apply p-6 rounded-lg transition-all duration-300;
+}
+
+.stat-block:hover {
+  @apply shadow-orange-glow transform -translate-y-1;
+}
+
+/* Ensure section takes full height */
+.min-h-screen {
+  min-height: 100vh;
 }

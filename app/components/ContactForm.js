@@ -6,19 +6,18 @@ import { motion } from 'framer-motion';
 export default function ContactForm() {
     return (
         <section className="py-16 px-6">
-            <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 bg-primary shadow-lg rounded-2xl p-8 md:p-16 max-w-screen-lg">
-                
+            <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 bg-dark-blue shadow-lg rounded-2xl p-8 md:p-16 max-w-screen-lg">    
                 {/* Contact Form */}
                 <div className="space-y-6">
                     <motion.h2
-                        className="text-3xl font-bold text-background mb-6 text-center md:text-left"
+                        className="text-3xl font-bold text-white mb-6 text-center md:text-left"
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
                         Get in Touch
                     </motion.h2>
-                    <p className="text-background mb-6 text-center md:text-left">
+                    <p className="text-white mb-6 text-center md:text-left">
                         We'd love to hear from you! Whether it's a project inquiry or just a hello, feel free to reach out.
                     </p>
 

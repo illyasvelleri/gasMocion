@@ -1,12 +1,10 @@
 import React from "react";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
+import WhyChooseUs from "./components/WhyChooseUs";
+import SolutionsSpotlight from "./components/SolutionsSpotlight";
 import Services from "./components/Services";
-import Projects from "./components/Projects";
-import StatsSection from "./components/StatsSection";
-import AboutUs from "./components/AboutUs";
-import HowItWorks from "./components/HowItWorks";
-import RecentProjectsCarousel from "./components/RecentProjects";
+import SafetyAssurance from "./components/SafetyAssurance";
 import CarouselTestimonial from "./components/CarouselTestimonial";
 import Footer from "./components/Footer";
 import ContactForm from "./components/ContactForm";
@@ -16,12 +14,10 @@ export default function Home() {
     <>
       <Header />
       <HeroSection />
+      <WhyChooseUs />
+      <SolutionsSpotlight />
       <Services />
-      <Projects />
-      <StatsSection />
-      <AboutUs />
-      <HowItWorks />
-      <RecentProjectsCarousel />
+      <SafetyAssurance />
       <CarouselTestimonial />
       <ContactForm />
       <Footer />
