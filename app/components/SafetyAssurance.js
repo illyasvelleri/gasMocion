@@ -34,37 +34,32 @@ export default function SafetyAssurance() {
     };
 
     return (
-        <section className="relative w-full overflow-hidden">
-            <div className="absolute inset-0 z-0">
-                <Image
-                    src="/images/gas-cylinder.jpg"
-                    alt="Gas Cylinder Safety Background"
-                    fill
-                    className="object-cover opacity-80"
-                />
-            </div>
-            <div className="absolute inset-0 bg-gray-900/40 z-10" />
+        <section className="relative w-full min-h-screen overflow-hidden">
+            {/* Background color */}
+            <div className="bg-spotlight-dark absolute inset-0 z-0" />
 
-            <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-screen flex flex-col">
-                {/* Headline with top padding */}
-                <h2 className="text-4xl md:text-5xl font-bold text-center text-white pt-16">
+            {/* Dark overlay for contrast */}
+            <div className="absolute inset-0 bg-spotlight-dark/60 z-10" />
+
+            <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col">
+                {/* Headline */}
+                <h2 className="text-4xl md:text-5xl font-bold text-center text-light pt-16">
                     Safety Is Our Promise
                 </h2>
 
-                {/* Gap between headline and arrow */}
+                {/* Arrow Button */}
                 <div className="my-12 flex justify-center">
-                    {/* Creative Arrow Button */}
                     <motion.div
                         animate={{ scale: [1, 1.1, 1] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                     >
                         <Link href="/safety">
-                            <div className="relative w-16 h-16 bg-black rounded-full flex items-center justify-center">
+                            <div className="relative w-16 h-16 bg- rounded-full flex items-center justify-center shadow-md hover:scale-110 transition-transform">
                                 <motion.div
-                                    className="absolute inset-0 rounded-full border-2 border-orange"
+                                    className="absolute inset-0 rounded-full border-2 border-light"
                                     animate={{
                                         scale: [1, 1.5, 1],
-                                        opacity: [0.8, 0.4, 0.8],
+                                        opacity: [0.8, 0.3, 0.8],
                                     }}
                                     transition={{
                                         duration: 1.2,
@@ -73,7 +68,7 @@ export default function SafetyAssurance() {
                                     }}
                                 />
                                 <svg
-                                    className="w-10 h-10 text-orange relative z-10"
+                                    className="w-10 h-10 text-light relative z-10"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24"
@@ -90,10 +85,10 @@ export default function SafetyAssurance() {
                     </motion.div>
                 </div>
 
-                {/* Gap between arrow and cards (flex-grow pushes cards down) */}
+                {/* Space filler to push cards to bottom */}
                 <div className="flex-grow" />
 
-                {/* Cards at Bottom with bottom padding */}
+                {/* Bottom Cards */}
                 <div className="pb-16">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
                         {safetyPoints.map((point, index) => (
@@ -105,7 +100,7 @@ export default function SafetyAssurance() {
                                 whileHover="hover"
                             >
                                 <Link href="/safety">
-                                    <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg flex items-center h-48">
+                                    <div className="bg-spotlight-dark/70 backdrop-blur-md border border-primary/30 rounded-xl shadow-lg flex items-center h-48 hover:scale-105 transition-transform">
                                         <div className="w-1/3 h-full p-4">
                                             <Image
                                                 src={point.image}
@@ -115,9 +110,9 @@ export default function SafetyAssurance() {
                                                 className="object-cover rounded-lg"
                                             />
                                         </div>
-                                        <div className="w-2/3 p-4 text-white">
+                                        <div className="w-2/3 p-4 text-light">
                                             <h3 className="text-lg font-semibold mb-2">{point.title}</h3>
-                                            <p className="text-sm">{point.description}</p>
+                                            <p className="text-sm opacity-90">{point.description}</p>
                                         </div>
                                     </div>
                                 </Link>
@@ -127,5 +122,6 @@ export default function SafetyAssurance() {
                 </div>
             </div>
         </section>
+
     );
 }

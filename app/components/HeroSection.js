@@ -65,10 +65,9 @@ import Image from "next/image";
 
 export default function HomeHero() {
   return (
-    <section className="w-full mt-4 py-16 px-4 sm:px-6 lg:px-8 bg-white relative">
-      {/* Container with image background */}
-      <div className="relative rounded-3xl overflow-hidden shadow-xl max-w-7xl mx-auto h-[500px]">
-        {/* Background Image */}
+    <section className="relative w-full min-h-screen py-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-black">
+      {/* Background Layer with Image & Overlay */}
+      <div className="absolute inset-0 z-0">
         <Image
           src="/images/gas-cylinder.jpg"
           alt="LPG truck delivering in Kochi"
@@ -76,45 +75,51 @@ export default function HomeHero() {
           className="object-cover"
           priority
         />
-
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50 z-10" />
-
-        {/* Text Content over image */}
-        <div className="relative z-20 flex flex-col items-center justify-center h-full text-center text-white px-6">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-            Fueling Kochi’s Future
-          </h1>
-          <p className="text-lg sm:text-xl mb-8">
-            Safe LPG. Reliable Delivery. Built for Business.
-          </p>
-          <Link href="/quote">
-            <button className="bg-orange text-white font-semibold py-3 px-8 rounded-full hover:bg-orange-dark transition-all duration-300">
-              Unlock Your Quote
-            </button>
-          </Link>
-        </div>
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
       </div>
 
-      {/* Scroll Teaser Outside Image */}
-      <div className="mt-6 flex justify-center">
-        <div className="text-gray-500 text-center">
-          <p className="text-sm text-black mb-1">See Why Kochi Trusts Us</p>
+      {/* Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto text-center text-white px-6">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
+          Fueling Kochi’s Future
+        </h1>
+        <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+          Safe LPG. Reliable Delivery. Built for Business. Serving your energy needs with care.
+        </p>
+        <Link href="/quote">
+          <button className="bg-primary text-white font-semibold py-3 px-8 rounded-full hover:bg-primary-dark transition duration-300 shadow-lg">
+            Unlock Your Quote
+          </button>
+        </Link>
+      </div>
+
+      {/* Decorative SVG or Spotlight Shape (optional for extra polish) */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
+        {/* Custom SVG gradients or spotlight effects could go here */}
+      </div>
+
+      {/* Scroll Down Teaser */}
+      <div className="relative z-10 mt-16 flex justify-center">
+        <div className="text-center flex flex-col items-center">
+          <p className="text-base font-medium text-primary mb-2 tracking-wide uppercase">
+            Trusted by Many
+          </p>
           <svg
-            className="w-6 h-6 mx-auto animate-bounce"
+            className="w-6 h-6 text-primary animate-bounce"
             fill="none"
             stroke="currentColor"
+            strokeWidth="2"
             viewBox="0 0 24 24"
           >
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              strokeWidth="2"
               d="M19 14l-7 7m0 0l-7-7m7 7V3"
             />
           </svg>
         </div>
       </div>
     </section>
+
   );
 }

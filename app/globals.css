@@ -10,7 +10,36 @@
   }
 }
 
+/* 👇 Custom spotlight background utility */
 @layer utilities {
+  .bg-spotlight-dark {
+    background: radial-gradient(circle at 30% 30%,
+        rgba(54, 187, 0, 0.25),
+        transparent 40%),
+      radial-gradient(circle at 70% 60%,
+        rgba(255, 231, 7, 0.15),
+        transparent 40%),
+      linear-gradient(135deg, #1e1e1e 0%, #121212 100%);
+    color: white;
+  }
+}
+
+.bg-spotlight-light {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 231, 7, 0.25), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(54, 187, 0, 0.15), transparent 40%),
+    linear-gradient(135deg, #f7f7f7 0%, #eaeaea 100%);
+  color: #1e1e1e;
+}
+
+.bg-spotlight-green {
+  background:
+    radial-gradient(circle at 60% 40%, rgba(54, 187, 0, 0.2), transparent 50%),
+    linear-gradient(135deg, #202e1f 0%, #121212 100%);
+  color: white;
+}
+@layer utilities {
+
   /* Define custom shadow with orange color */
   .shadow-orange-glow {
     box-shadow: 0 4px 6px -1px rgba(249, 115, 22, 0.2), 0 2px 4px -1px rgba(249, 115, 22, 0.06);

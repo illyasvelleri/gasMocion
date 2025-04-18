@@ -9,7 +9,7 @@ export default function WhyChooseUs() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <section className="w-full bg-dark-blue py-20">
+    <section className="w-full bg-spotlight-green py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-white text-3xl md:text-4xl font-bold text-center mb-12">
           Why Choose Us
@@ -51,8 +51,8 @@ export default function WhyChooseUs() {
         </div>
 
         <div className="text-center mt-12">
-          <Link href="/for-business">
-            <button className="bg-orange text-white font-bold py-3 px-6 rounded-full hover:bg-orange-dark transition-all duration-300">
+          <Link href="/about">
+            <button className="bg-accent text-white font-bold py-3 px-6 rounded-full hover:bg-orange-dark transition-all duration-300">
               Explore Our Edge
             </button>
           </Link>

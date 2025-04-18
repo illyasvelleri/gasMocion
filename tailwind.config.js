@@ -8,9 +8,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "dark-blue": "#1E3A8A",
-        orange: "#F97316",
-        "orange-dark": "#EF4444",
+        primary: "#36bb00",       // brandGreen, used for primary elements (buttons, etc.)
+        secondary: "#ffe808",     // brandYellow, used for accents (buttons, links)
+        dark: "#1e1e1e",          // brandDark, used for dark backgrounds/text
+        light: "#f7f7f7",         // light background or neutral tones
+        accent: "#ff6f61",        // a fresh accent color for highlights, calls to action
       },
     },
   },
