@@ -479,7 +479,7 @@ export default function HomePage() {
                 className="relative z-10"
               >
                 <Image
-                  src="/Images/gas-cylinder-illustration.png"
+                  src="/images/gas-cylinder-illustration.png"
                   alt="Modern gas cylinder"
                   width={400}
                   height={400}

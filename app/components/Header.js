@@ -52,7 +52,7 @@ export default function Header() {
           <Link href="/" className="flex items-center -m-1.5 p-1.5">
           <div className="h-10 w-10 rounded-full bg-[#ffe808] flex items-center justify-center">
               <Image
-                src="/Images/Logo.png"
+                src="/images/Logo.png"
                 alt="Gasmocion Logo"
                 width={32}
                 height={32}
