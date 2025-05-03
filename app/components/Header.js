@@ -1,101 +1,191 @@
-'use client';
+"use client";
 
-import React from "react";
-import { useState } from 'react';
-import { Dialog, DialogPanel } from '@headlessui/react';
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useState } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 import { FaInstagram } from "react-icons/fa";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+
+// Note: To use Tactic Sans, ensure it's included in your project:
+// 1. Add to /public/fonts/ or use a CDN (if available).
+// 2. Import in CSS (e.g., globals.css):
+// @font-face {
+//   font-family: 'Tactic Sans';
+//   src: url('/fonts/TacticSans-Regular.woff2') format('woff2');
+//   font-weight: 700;
+//   font-style: normal;
+// }
+// If Tactic Sans is unavailable, fallback to 'Inter' or 'system-ui'.
 
 const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'For Business', href: '/interiorProjects' },
-    { name: 'Safety First', href: '/exteriorProjects' },
-    { name: 'Contact', href: '/contact' },
+  { name: "Home", href: "/" },
+  { name: "For Business", href: "/projects" },
+  { name: "Safety First", href: "/safety" },
+  { name: "Contact", href: "/contact" },
 ];
 
+export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-const Header = () => {
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-    return (
-        <header className="absolute inset-x-0 top-0 z-50">
-            <nav className="flex items-center justify-between p-6 lg:px-8">
-                {/* Logo */}
-                <div className="flex lg:flex-1">
-                    <a href="/" className="-m-1.5 p-1.5">
-                        <img
-                            src="/logo.png"
-                            alt="Logo"
-                            className="h-10 w-auto"
-                        />
-                    </a>
-                </div>
+  const fadeIn = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+  };
 
-                {/* Mobile Menu Button */}
-                <div className="flex lg:hidden">
-                    <button
-                        onClick={() => setMobileMenuOpen(true)}
-                        className="p-2.5 text-gray-100"
-                    >
-                        <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                </div>
+  const mobileMenuVariants = {
+    hidden: { opacity: 0, x: "100%" },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.3 } },
+    exit: { opacity: 0, x: "100%", transition: { duration: 0.3 } }
+  };
 
-                {/* Desktop Navigation */}
-                <div className="hidden lg:flex lg:gap-x-12">
-                    {navigation.map((item) => (
-                        <a
-                            key={item.name}
-                            href={item.href}
-                            className="relative text-sm font-semibold text-gray-900 
-                                   after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 
-                                   after:bg-gray-100 after:transition-all after:duration-300 
-                                   hover:after:w-full"
-                        >
-                            {item.name}
-                        </a>
-                    ))}
-                </div>
+  return (
+    <motion.header
+      className="absolute inset-x-0 top-0 z-50"
+      initial="hidden"
+      animate="visible"
+      variants={fadeIn}
+    >
+      <nav className="flex items-center justify-between p-6 lg:px-8">
+        {/* Logo */}
+        <div className="flex lg:flex-1">
+          <Link href="/" className="flex items-center -m-1.5 p-1.5">
+          <div className="h-10 w-10 rounded-full bg-[#ffe808] flex items-center justify-center">
+              <Image
+                src="/Images/Logo.png"
+                alt="Gasmocion Logo"
+                width={32}
+                height={32}
+                className="h-8 w-8"
+                priority
+                sizes="(max-width: 768px) 32px, 32px"
+              />
+            </div>
+            <span
+              className="ml-2 text-xl font-bold text-gray-900"
+              style={{ fontFamily: "'Tactic Sans', 'Inter', system-ui, sans-serif" }}
+            >
+              Gasmocion
+            </span>
+          </Link>
+        </div>
 
-                {/* Follow */}
-                <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a
-                        href="https://www.instagram.com/yourusername"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm font-semibold text-gray-900 hover:text-pink-400 transition"
-                    >
-                        <FaInstagram className="text-lg" />
-                        Follow <span aria-hidden="true">&rarr;</span>
-                    </a>
-                </div>
-            </nav>
+        {/* Mobile Menu Button */}
+        <div className="flex lg:hidden">
+          <motion.button
+            onClick={() => setMobileMenuOpen(true)}
+            className="p-2.5 text-gray-700"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            aria-label="Open menu"
+          >
+            <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+          </motion.button>
+        </div>
 
-            {/* Mobile Menu */}
-            <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
-                <DialogPanel className="fixed inset-0 z-50 flex items-center justify-end bg-gray-800 bg-opacity-75">
-                    <div className="relative w-full max-w-sm h-full max-h-screen overflow-y-auto bg-white p-6">
-                        <button
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="absolute top-4 right-4 text-gray-700"
-                        >
-                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-                        </button>
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex lg:gap-x-12">
+          {navigation.map((item, idx) => (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: idx * 0.1 }}
+            >
+              <Link
+                href={item.href}
+                className="relative text-sm font-semibold text-gray-900 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-0.5 after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full hover:text-blue-500"
+              >
+                {item.name}
+              </Link>
+            </motion.div>
+          ))}
+        </div>
 
-                        <div className="mt-8">
-                            {navigation.map((item) => (
-                                <a
-                                    key={item.name}
-                                    href={item.href}
-                                    className="block px-4 py-2 text-gray-900 hover:bg-gray-100"
-                                >
-                                    {item.name}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                </DialogPanel>
-            </Dialog>
-        </header>
-    );
-};
-export default Header;
+        {/* Follow */}
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <motion.a
+            href="https://www.instagram.com/gasmocion"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm font-semibold text-gray-900 hover:text-green-500 transition"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.3, delay: 0.4 }}
+          >
+            <FaInstagram className="text-lg" />
+            Follow <span aria-hidden="true">→</span>
+          </motion.a>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <motion.div
+          className="fixed inset-0 z-50 lg:hidden bg-gray-800 bg-opacity-75 flex items-center justify-end"
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { duration: 0.3 } },
+            exit: { opacity: 0, transition: { duration: 0.3 } }
+          }}
+        >
+          <motion.div
+            className="relative w-full max-w-sm h-full max-h-screen overflow-y-auto bg-white p-6"
+            variants={mobileMenuVariants}
+          >
+            <motion.button
+              onClick={() => setMobileMenuOpen(false)}
+              className="absolute top-4 right-4 text-gray-700"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label="Close menu"
+            >
+              <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+            </motion.button>
+
+            <div className="mt-8">
+              {navigation.map((item, idx) => (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: idx * 0.1 }}
+                >
+                  <Link
+                    href={item.href}
+                    className="block px-4 py-2 text-lg font-medium text-gray-900 hover:bg-blue-50 hover:text-blue-500 transition"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              className="mt-6 px-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.4 }}
+            >
+              <a
+                href="https://www.instagram.com/gasmocion"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-sm font-semibold text-gray-900 hover:text-green-500 transition"
+              >
+                <FaInstagram className="text-lg" />
+                Follow <span aria-hidden="true">→</span>
+              </a>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      )}
+    </motion.header>
+  );
+}
